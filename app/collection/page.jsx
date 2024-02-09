@@ -1,12 +1,19 @@
 "use client";
 import { NFTCollectionTokenListView } from "@covalenthq/goldrush-kit";
-import "@covalenthq/goldrush-kit/styles.css";
+// import "@covalenthq/goldrush-kit/styles.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useNftContext } from "../context";
 
 export default function page() {
   const route = useRouter();
+  const { updateNftData } = useNftContext();
+
+  const handleTokenDetailView = (e) => {
+    updateNftData(e);
+  }
+
   return (
     <NFTCollectionTokenListView
       chain_name={"eth-mainnet"}
@@ -14,8 +21,12 @@ export default function page() {
       on_nft_click={(e) => {
         console.log(e);
         route.push(`/collection/${e.nft_data.token_id}`);
+        handleTokenDetailView(e);
       }}
       className="bg-red-400"
-    ></NFTCollectionTokenListView>
+      style={{ background: 'purple' }}
+    >
+      OPenine
+    </NFTCollectionTokenListView>
   );
 }
