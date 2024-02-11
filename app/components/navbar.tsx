@@ -1,13 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
     return (
-        <section className="">
-            <div className="navbar bg-base-100 w-9/12 mx-auto">
+        <section className="sticky top-0 z-10 bg-base-100/70 backdrop-blur dark:backdrop-blur-none">
+            <div className="navbar bg-inherit w-9/12 mx-auto py-4">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl">Alchemist</a>
+                    <Link href={"/"} className="btn btn-ghost text-xl">Alchemist</Link>
                 </div>
                 <div className="flex-none">
                     <div className="dropdown dropdown-end">

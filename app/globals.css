@@ -28,3 +28,68 @@ body {
     text-wrap: balance;
   }
 }
+
+/* NFT COLLECTION CONTAINER STYLES */
+.nft-collection-container>div {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.nft-collection-container>div>div:nth-child(1) {
+  margin-bottom: 2rem;
+  order: 0;
+}
+
+.nft-collection-container>div>div:nth-child(1)>div {
+  outline: none;
+  border: 0;
+  @apply bg-base-100 text-base-content;
+}
+
+.nft-collection-container>div>div:nth-child(2) {
+  /* background-color: purple; */
+  position: relative;
+  /* justify-content: safe; */
+  order: 2;
+  row-gap: 1.6rem;
+}
+
+.nft-collection-container>div>div:nth-child(2)>* {
+  width: 260px;
+  /* margin: 0 auto; */
+  border: 0;
+  background-color: inherit;
+  color: inherit;
+  @apply bg-base-200 text-base-content;
+}
+
+.nft-collection-container>div>div:nth-child(3) {
+  padding: 2rem 0;
+  order: 1;
+}
+
+.nft-collection-container>div>div:nth-child(3) * {
+  border: 0;
+  @apply text-base-content rounded-lg;
+}
+
+.nft-collection-container>div>div:nth-child(3) button {
+  border: 0;
+  @apply btn;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nft-collection-container>div>div:nth-child(2)>* {
+    @apply bg-base-100;
+  }
+
+  .nft-collection-container>div>div:nth-child(3) * {
+    border: 0;
+    @apply bg-base-100 text-base-content rounded-lg;
+  }
+
+  .nft-collection-container>div>div:nth-child(3) button {
+    border: 0;
+    @apply btn bg-base-100;
+  }
+}
