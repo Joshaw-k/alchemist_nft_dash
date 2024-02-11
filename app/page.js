@@ -9,7 +9,6 @@ export default function Home() {
         className="flex items-center justify-center"
         style={{ height: "100vh" }}
       >
-        Contains
         <div className="w-fit grid">
           <button className="bg-blue-500 p-3 text-white font-bold rounded-md">
             <Link href="/collection/">NFT CollectionToken ListView</Link>
