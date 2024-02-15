@@ -9,15 +9,11 @@ export default function Home() {
         className="flex items-center justify-center"
         style={{ height: "100vh" }}
       >
-        <div className="w-fit grid">
-          <button className="bg-blue-500 p-3 text-white font-bold rounded-md">
-            <Link href="/collection/">NFT CollectionToken ListView</Link>
-          </button>
-          <button
-            className="bg-red-500 p-3 text-white font-bold rounded-md"
-            style={{ marginTop: "10px" }}
-          >
-            <Link href="/walletTokens/">NFT WalletTokens ListView</Link>
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-[#FF4B8B] mb-5">Alchemist 4.0 NFT Dashboard </h1>
+        <p className="text-md dark:text-white max-w-lg mx-auto mb-3">This dashboard was built using Covalent's GoldRush Kit, focused on the NFT collection associated with the 2024 Alchemist program.</p>
+        <button className="bg-[#FF4B8B] px-5 py-2 text-white font-bold rounded-md">
+            <Link href="/collection/">GoTo Collection ListView</Link>
           </button>
         </div>
       </div>

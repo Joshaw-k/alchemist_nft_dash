@@ -49,15 +49,9 @@ const page = () => {
                 <li>{nftData?.contract_name}</li>
               </ul>
             </div>
-            <div role="tablist" className="tabs tabs-lg tabs-boxed *:text-sm">
-              <button role="tab" className={`tab ${isActiveTab === 'info' ? 'tab-active' : ''}`} ref={infoTab} onClick={handleViewToggle}>Info</button>
-              <button role="tab" className={`tab ${isActiveTab === 'sales' ? 'tab-active' : ''}`} ref={salesTab} onClick={handleViewToggle}>Sales</button>
-            </div>
           </section>
 
-          {
-            currentView === "info" &&
-            <section ref={infoView}>
+          <section ref={infoView}>
               <section>
                 <div className="relative flex flex-row gap-12">
                   <div className="avatar">
@@ -141,19 +135,6 @@ const page = () => {
                 </div>
               </section>
             </section>
-          }
-
-          {/* Sales View */}
-          {
-            currentView === "sales" &&
-            <section ref={salesView}>
-              <NFTDetailView
-                chain_name={"zora-mainnet"} //sample chain name
-                collection_address={nftAddress} //sample collection address
-                token_id={`${id}`} //sample token id
-              />
-            </section>
-          }
         </section>
       </section>
     </section>
