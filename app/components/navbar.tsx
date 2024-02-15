@@ -8,7 +8,7 @@ const Navbar = () => {
         <section className="sticky top-0 z-10 bg-base-100/70 backdrop-blur dark:backdrop-blur-none">
             <div className="navbar bg-inherit w-9/12 mx-auto py-4">
                 <div className="flex-1">
-                    <Link href={"/"} className="btn btn-ghost text-xl">Alchemist</Link>
+                    <Link href={"/"} className="btn btn-ghost text-xl text-[#FF4B8B]">Alchemist 4.0</Link>
                 </div>
                 <div className="flex-none">
                     <div className="dropdown dropdown-end">

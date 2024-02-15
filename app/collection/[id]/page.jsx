@@ -18,6 +18,7 @@ const page = () => {
   const salesTab = useRef(null);
   const [currentView, setCurrentView] = useState("info");
   const [isActiveTab, setIsActiveTab] = useState("info");
+  const { setnftAddress,nftAddress } = useNftContext();
   console.log(nftData);
 
   const handleViewToggle = () => {
@@ -61,10 +62,10 @@ const page = () => {
                 <div className="relative flex flex-row gap-12">
                   <div className="avatar">
                     <div className="w-[32rem] rounded">
-                      <img src={nftData?.nft_data?.external_data?.asset_url} className={"rounded-md"} />
+                      <img src={nftData?.nft_data?.external_data?.image} className={"rounded-md"} />
                     </div>
                   </div>
-                  <section className="self-end flex flex-col gap-y-4">
+                  <section className="self-start flex flex-col gap-y-4">
                     <div className="font-semibold text-5xl py-4">{nftData?.contract_name} #{nftData?.nft_data?.token_id}</div>
                     <div className="flex flex-row flex-wrap gap-4 text-balance">
                       {
@@ -79,12 +80,12 @@ const page = () => {
                   </section>
                 </div>
 
-                <div className="flex flex-row items-center gap-4 py-4">
+                <div className="flex flex-row items-center gap-3 py-4">
                   <div className="font-semibold text-lg text-gray-500">{nftData?.contract_ticker_symbol}</div>
                   <div className="size-2 bg-gray-300 rounded-full mx-4"></div>
-                  <div className="font-semibold text-lg text-gray-500">{shortenAddress(nftData?.contract_address)}</div>
+                  <div className="font-semibold text-lg text-gray-400"><span className="font-bold text-black">Contract: </span>{shortenAddress(nftData?.contract_address)}</div>
                   <div className="size-2 bg-gray-300 rounded-full mx-4"></div>
-                  <div className="font-semibold text-lg text-gray-500">{sizeFormatter(nftData?.nft_data?.external_data?.asset_size_bytes)} MB</div>
+                  <div className="font-semibold text-lg text-gray-400"><span className="font-bold text-black">Video: </span>15.4 MB</div>
                 </div>
 
                 {/* Other Media */}
@@ -95,9 +96,13 @@ const page = () => {
                       nftData?.nft_data?.external_data?.animation_url
                         ?
                         <video
-                          src={nftData?.nft_data?.external_data?.animation_url}
                           className="w-80 bg-base-200 rounded-lg"
-                        ></video>
+                          autoPlay
+                          controls
+                          loop
+                        >
+                          <source src={`https://ipfs.io/ipfs/${nftData?.nft_data?.external_data?.animation_url.slice(7,)}`} type="video/mp4"></source>
+                        </video>
                         : <div
                           className="flex flex-row justify-center items-center w-80 h-40 bg-base-200 rounded-lg text-pretty text-center text-gray-500 cursor-not-allowed"
                         >No Animation</div>
@@ -111,11 +116,11 @@ const page = () => {
                   <div className="flex flex-row gap-8 py-2">
                     <div className="flex flex-row items-center gap-4">
                       <span>Owner:</span>
-                      <span className="bg-base-200 rounded-lg p-4 border-[1px] border-b-4 border-solid border-gray-300">{nftData?.nft_data?.external_data?.original_owner ?? "-"}</span>
+                      <span className="bg-base-200 rounded-lg p-4 border-[1px] border-b-4 border-solid border-gray-300">{nftData?.nft_data?.original_owner ? shortenAddress(nftData?.nft_data?.original_owner) : "-"}</span>
                     </div>
                     <div className="flex flex-row items-center gap-4">
                       <span>Size:</span>
-                      <span className="bg-base-200 rounded-lg p-4 border-[1px] border-b-4 border-solid border-gray-300">{sizeFormatter(nftData?.nft_data?.external_data?.asset_size_bytes)} MB</span>
+                      <span className="bg-base-200 rounded-lg p-4 border-[1px] border-b-4 border-solid border-gray-300">15.4 MB</span>
                     </div>
                   </div>
                 </div>
@@ -131,7 +136,7 @@ const page = () => {
 
                 {/* Suggestions */}
                 <div className="">
-                  <header className="py-2 font-bold text-sm text-gray-600 leading-loose">Suggestions</header>
+                  <a className="bg-[#FF4B8B] px-3 py-2 rounded-lg text-white font-bold text-lg" href={`https://opensea.io/assets/zora/0xfeee3700698f8d75bcc18e009022c7b44d2af44f/${id}`} target="_blank">Mint on Zora</a>
                 </div>
               </section>
             </section>
@@ -142,8 +147,8 @@ const page = () => {
             currentView === "sales" &&
             <section ref={salesView}>
               <NFTDetailView
-                chain_name={"eth-mainnet"} //sample chain name
-                collection_address={"0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"} //sample collection address
+                chain_name={"zora-mainnet"} //sample chain name
+                collection_address={nftAddress} //sample collection address
                 token_id={`${id}`} //sample token id
               />
             </section>

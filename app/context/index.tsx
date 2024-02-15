@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { createContext, useState, type ReactNode } from "react"
-import { GoldRushProvider } from "@covalenthq/goldrush-kit"
 import { useTheme } from "next-themes"
 import { ALCHEMY_LOCALSTORE } from "../utils/constants";
 
@@ -30,15 +29,22 @@ interface NftProviderProps {
 }
 
 const getNftData = () => {
-  
+  let res = {};
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      const storedData = window.localStorage.getItem(ALCHEMY_LOCALSTORE);
+      res = JSON.parse(storedData);
+    }
+  }, []);
   // console.log(JSON.stringify(localStorage.getItem(ALCHEMY_LOCALSTORE), replacer, 2));
   // console.log(JSON.parse(localStorage.getItem(ALCHEMY_LOCALSTORE)));
-  return JSON.parse(window.localStorage.getItem(ALCHEMY_LOCALSTORE));
+  // return JSON.parse(window.localStorage.getItem(ALCHEMY_LOCALSTORE));
+  return res;
 }
 
 export const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
   const { theme } = useTheme()
-  const [nftAddress, setnftAddress] = useState<string>("")
+  const [nftAddress, setnftAddress] = useState<string>("0xfeee3700698f8d75bcc18e009022c7b44d2af44f")
   const [chains, setChains] = useState<[]>([])
   const [tableState, setTableState] = useState({})
   const [color, setColor] = useState<any>("slate")

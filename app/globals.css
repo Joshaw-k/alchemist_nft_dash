@@ -38,6 +38,7 @@ body {
 .nft-collection-container>div>div:nth-child(1) {
   margin-bottom: 2rem;
   order: 0;
+  display: none;
 }
 
 .nft-collection-container>div>div:nth-child(1)>div {
@@ -50,13 +51,13 @@ body {
   /* background-color: purple; */
   position: relative;
   /* justify-content: safe; */
-  order: 2;
+  /* order: 2; */
   row-gap: 1.6rem;
 }
 
 .nft-collection-container>div>div:nth-child(2)>* {
-  width: 260px;
-  /* margin: 0 auto; */
+  width: 250px;
+  margin: 0 auto;
   border: 0;
   background-color: inherit;
   color: inherit;
@@ -65,7 +66,7 @@ body {
 
 .nft-collection-container>div>div:nth-child(3) {
   padding: 2rem 0;
-  order: 1;
+  /* order: 1; */
 }
 
 .nft-collection-container>div>div:nth-child(3) * {
@@ -75,6 +76,7 @@ body {
 
 .nft-collection-container>div>div:nth-child(3) button {
   border: 0;
+  color: white;
   @apply btn;
 }
 

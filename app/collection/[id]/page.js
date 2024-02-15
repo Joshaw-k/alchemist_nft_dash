@@ -5,10 +5,11 @@ import React from "react";
 
 const page = () => {
   const { id } = useParams();
+  const { setnftAddress,nftAddress } = useNftContext();
   return (
     <NFTDetailView
-      chain_name={"eth-mainnet"}
-      collection_address={"0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"} //sample collection address
+      chain_name={"zora-mainnet"}
+      collection_address={nftAddress} //sample collection address
       token_id={`${id}`} //sample token id
     />
   );
