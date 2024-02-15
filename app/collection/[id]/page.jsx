@@ -103,6 +103,7 @@ const page = () => {
                         >
                           <source src={`https://ipfs.io/ipfs/${nftData?.nft_data?.external_data?.animation_url.slice(7,)}`} type="video/mp4"></source>
                         </video>
+
                         : <div
                           className="flex flex-row justify-center items-center w-80 h-40 bg-base-200 rounded-lg text-pretty text-center text-gray-500 cursor-not-allowed"
                         >No Animation</div>
